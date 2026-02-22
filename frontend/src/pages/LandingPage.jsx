@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styles from './LandingPage.module.css';
 import { Link } from 'react-router-dom';
 import { getOrders } from '../services/api';
+import showcaseImg from '../assets/Silk Saree Embroidery.png';
+import creatorImg from '../assets/creator.jpg';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5001';
 
 const LandingPage = () => {
     const [orders, setOrders] = useState([]);
@@ -47,7 +51,7 @@ const LandingPage = () => {
                             </ul>
                         </div>
                         <div className={styles.showcaseImage}>
-                            <img src="/src/assets/Silk Saree Embroidery.png" alt="Silk Saree Embroidery" className="fade-in" />
+                            <img src={showcaseImg} alt="Silk Saree Embroidery" className="fade-in" />
                         </div>
                     </div>
                 </div>
@@ -88,7 +92,7 @@ const LandingPage = () => {
                                     <div
                                         className={styles.orderImage}
                                         style={{
-                                            backgroundImage: `url(${order.image_url ? `http://localhost:5001${order.image_url}` : 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'})`
+                                            backgroundImage: `url(${order.image_url ? `${API_BASE_URL}${order.image_url}` : 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'})`
                                         }}
                                     >
                                         {!order.image_url && <span style={{ position: 'absolute', top: '10px', right: '10px', background: '#3b82f6', color: 'white', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 'bold' }}>SAMPLE</span>}
@@ -126,7 +130,7 @@ const LandingPage = () => {
                     <div className={styles.creatorGrid}>
                         <div className={`${styles.creatorImageWrapper} fade-in`}>
                             <img
-                                src="/src/assets/creator.jpg"
+                                src={creatorImg}
                                 alt="Dinesh Umashankar"
                                 className={styles.creatorImage}
                                 onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }}

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5001';
 import { Routes, Route, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getOrders, applyForOrder, getContracts, signContract, updateOrderStatus } from '../services/api';
@@ -112,7 +114,7 @@ const BrowseView = ({ orders, handleApply }) => (
                         <div
                             className={styles.orderImage}
                             style={{
-                                backgroundImage: `url(${order.image_url ? `http://localhost:5001${order.image_url}` : 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'})`
+                                backgroundImage: `url(${order.image_url ? `${API_BASE_URL}${order.image_url}` : 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'})`
                             }}
                         >
                             {!order.image_url && <div className={styles.orderBadge}>SAMPLE</div>}

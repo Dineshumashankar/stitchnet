@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import styles from '../pages/Dashboard.module.css'; // Updated to Dashboard styles
 
+const API_BASE_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5001';
+
 const ProfileView = () => {
     const [profile, setProfile] = useState({
         name: '',
@@ -97,7 +99,7 @@ const ProfileView = () => {
                         }}>
                             {photoPreview || profile.profile_photo ? (
                                 <img
-                                    src={photoPreview || `http://localhost:5001${profile.profile_photo}`}
+                                    src={photoPreview || (profile.profile_photo ? `${API_BASE_URL}${profile.profile_photo}` : '')}
                                     alt="Profile"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
