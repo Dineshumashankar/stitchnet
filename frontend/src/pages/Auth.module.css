@@ -1,0 +1,231 @@
+/* Global reset for this module */
+.authContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2f6 0%, #e0e7ff 100%);
+    background-size: cover;
+    padding: 20px;
+}
+
+.authCard {
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    gap: 12px;
+}
+
+.logoIcon {
+    width: 48px;
+    height: 48px;
+    background-color: #0056D2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+}
+
+.brandName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.welcomeTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px 0;
+}
+
+.welcomeSubtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.loginForm {
+    text-align: left;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 14px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.inputWrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 44px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    color: #1f2937;
+}
+
+.inputWrapper input:focus {
+    border-color: #0056D2;
+    box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.1);
+    outline: none;
+}
+
+.plainSelect {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    color: #1f2937;
+    cursor: pointer;
+}
+
+.plainSelect:focus {
+    border-color: #0056D2;
+    box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.1);
+    outline: none;
+}
+
+.inputWrapper input::placeholder {
+    color: #9ca3af;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.passwordToggle:hover {
+    color: #4b5563;
+}
+
+.forgotPassword {
+    text-align: right;
+    margin-bottom: 24px;
+}
+
+.forgotPassword a {
+    color: #0056D2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgotPassword a:hover {
+    color: #0044a6;
+    text-decoration: underline;
+}
+
+.loginBtn {
+    width: 100%;
+    padding: 14px;
+    background-color: #0056D2;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(0, 86, 210, 0.2);
+}
+
+.loginBtn:hover {
+    background-color: #0044a6;
+    transform: translateY(-1px);
+}
+
+.loginBtn:active {
+    transform: translateY(0);
+}
+
+.footerLink {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.footerLink a {
+    color: #0056D2;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.footerLink a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border: 1px solid #fecaca;
+    text-align: center;
+}
