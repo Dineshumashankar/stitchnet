@@ -36,20 +36,35 @@ if (process.env.DATABASE_URL) {
 
     // Helper to convert PostgreSQL $1, $2 placeholders to MySQL ?
     const transformQuery = (text) => {
-        return text.replace(/\$\d+/g, '?');
+        // Strip PostgreSQL specific "RETURNING id" clause for MySQL
+        const stripped = text.replace(/RETURNING id/gi, '').trim();
+        return stripped.replace(/\$\d+/g, '?');
     };
 
     db = {
         query: async (text, params) => {
-            const [rows] = await pool.execute(transformQuery(text), params);
+            const isInsert = text.trim().toUpperCase().startsWith('INSERT');
+            const [result] = await pool.execute(transformQuery(text), params);
+
+            // If it's an INSERT and we have an insertId, pack it into rows to mimic Postgres RETURNING id
+            const rows = Array.isArray(result) ? result : [];
+            if (isInsert && result.insertId) {
+                return { rows: [{ id: result.insertId }] };
+            }
             return { rows };
         },
         execute: async (text, params) => {
-            const [rows] = await pool.execute(transformQuery(text), params);
+            const isInsert = text.trim().toUpperCase().startsWith('INSERT');
+            const [result] = await pool.execute(transformQuery(text), params);
+
+            const rows = Array.isArray(result) ? result : [];
+            if (isInsert && result.insertId) {
+                return { rows: [{ id: result.insertId }] };
+            }
             return { rows };
         }
     };
-    console.log('Connected using MySQL Shim (Local)');
+    console.log('Connected using MySQL Shim (Local with Postgres Query Support)');
 }
 
 module.exports = db;
