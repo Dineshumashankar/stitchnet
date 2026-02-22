@@ -2,7 +2,7 @@ services:
   # Backend API
   - type: web
     name: stitchnet-backend
-    env: node
+    runtime: node
     plan: free
     buildCommand: npm install
     startCommand: node server.js
@@ -21,10 +21,10 @@ services:
   # Frontend Static Site
   - type: web
     name: stitchnet-frontend
-    env: static
+    runtime: static
     plan: free
     buildCommand: npm install && npm run build
-    staticPublishDir: dist
+    staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
         fromService:
