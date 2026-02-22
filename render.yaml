@@ -1,0 +1,39 @@
+services:
+  # Backend API
+  - type: web
+    name: stitchnet-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5001
+      - key: DATABASE_URL
+        fromDatabase:
+          name: stitchnet-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+
+  # Frontend Static Site
+  - type: static
+    name: stitchnet-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: stitchnet-backend
+          property: host
+
+databases:
+  - name: stitchnet-db
+    plan: free
+    databaseName: stitchnet
+    user: admin
