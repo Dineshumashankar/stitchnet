@@ -19,7 +19,7 @@ services:
         value: production
 
   # Frontend Static Site
-  - type: static
+  - type: web
     name: stitchnet-frontend
     env: static
     plan: free
