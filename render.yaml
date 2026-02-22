@@ -3,7 +3,7 @@ services:
   - type: web
     name: stitchnet-backend
     runtime: node
-    rootDirectory: backend
+    rootDir: backend
     plan: free
     buildCommand: npm install
     startCommand: node server.js
@@ -23,7 +23,7 @@ services:
   - type: web
     name: stitchnet-frontend
     runtime: static
-    rootDirectory: frontend
+    rootDir: frontend
     plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
